@@ -2,7 +2,7 @@
 var http         = require('http');
 var bodyParser   = require('body-parser');
 var express      = require('express');
-var cookieParser = require('cookie-parser'); 
+var cookieParser = require('cookie-parser');
 var port         = process.env.PORT || 1339;
 var app          = express();
 var path         = require('path');
