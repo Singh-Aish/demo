@@ -1,0 +1,137 @@
+<div id="main-content" ng-init="getRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Edit Task</h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="task">Task List</a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Edit Task</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> Edit Task</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="editTask" ng-submit="updateRecord(editTask.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.name" name="task_name" type="text"
+                                               placeholder="Enter Name" required alphanumeric>
+
+                                        <div ng-messages="editTask.task_name.$error"
+                                             ng-show="editTask.task_name.$invalid && !editTask.task_name.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Name.</p>
+
+                                            <p ng-message="alphanumeric" class="error-class">Please Enter Alphanumeric
+                                                Value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Type :</label>
+
+                                    <div class="controls" ng-init="formData.type='On Board'">
+                                        <label class="radio span1">
+                                            <input type="radio" ng-model="formData.type" value="On Board" ng-change="getEventByType(formData.type)">
+                                            On Board
+                                        </label>
+                                        </label>
+                                        <label class="radio span3">
+                                            <input type="radio" ng-model="formData.type" value="Off Board" ng-change="getEventByType(formData.type)">
+                                            Off Board
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Event :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.event"
+                                                ng-options="item._id as item.name for item in events | orderBy:'name'"
+                                                name="task_event" type="text" required
+                                                ng-init="getEvents()">
+                                            <option value=""> -- Choose Event --</option>
+                                        </select>
+
+                                        <div ng-messages="editTask.task_event.$error"
+                                             ng-show="editTask.task_event.$invalid && !editTask.task_event.$pristine">
+                                            <p ng-message="required" class="error-class">Please Select Event.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea class="span6 " rows="5" data-ng-model="formData.description"
+                                                  name="task_description" placeholder="Enter Description"
+                                                  required></textarea>
+
+                                        <div ng-messages="editTask.task_description.$error"
+                                             ng-show="editTask.task_description.$invalid && !editTask.task_description.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Description.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Maximum days for completion</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.day" name="task_day" tabindex="-1"
+                                                type="text" required>
+                                            <option value=""> -- Select Days --</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <div ng-messages="editTask.task_day.$error"
+                                             ng-show="editTask.task_day.$invalid && !editTask.task_day.$pristine">
+                                            <p ng-message="required" class="error-class">Please select maximum number of days for completion of task.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="editTask.$invalid"><i
+                                            class="fa fa-check"> </i> Create
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="task"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

@@ -1,0 +1,134 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Create Leave Rule</h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="leaveRule">Leave Rule List</a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Create Leave Rule</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> Create Leave Rule</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="addLeaveRule" ng-submit="save(addLeaveRule.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Rule Name :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.name" name="leaveRule_name"
+                                               type="text"
+                                               placeholder="Enter Name" required alphanumeric maxlength="100">
+                                    </div>
+                                    <div ng-messages="addLeaveRule.leaveRule_name.$error"
+                                         ng-show="addLeaveRule.leaveRule_name.$invalid && !addLeaveRule.leaveRule_name.$pristine">
+                                        <p ng-message="required" class="error-class">Please Enter Name.</p>
+
+                                        <p ng-message="alphanumeric" class="error-class">Please Enter Alphanumeric
+                                            Value.</p>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea class="span6 " rows="5" data-ng-model="formData.description"
+                                                  name="leaveRule_description" placeholder="Enter Description"
+                                                  maxlength="500"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Allocation :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.allocation" name="leaveRule_allocation"
+                                                tabindex="-1" type="text" required>
+                                            <option value=""> -- Choose Allocation --</option>
+                                            <option value="Yearly">Yearly</option>
+                                            <option value="Half Yearly">Half Yearly</option>
+                                            <option value="Quaterly">Quaterly</option>
+                                            <option value="Monthly">Monthly</option>
+                                        </select>
+
+                                        <div ng-messages="addLeaveRule.leaveRule_allocation.$error"
+                                             ng-show="addLeaveRule.leaveRule_allocation.$invalid && !addLeaveRule.leaveRule_allocation.$pristine">
+                                            <p ng-message="required" class="error-class">Please Select Criteria.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Leave Type :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.leaveType"
+                                                ng-options="item._id as item.name for item in leaveTypes | orderBy:'name'"
+                                                name="leaveRule_leaveType" type="text" required
+                                                ng-init="getLeaveType()">
+                                            <option value=""> -- Choose Leave Type --</option>
+                                        </select>
+
+                                        <div ng-messages="addLeaveRule.leaveRule_leaveType.$error"
+                                             ng-show="addLeaveRule.leaveRule_leaveType.$invalid && !addLeaveRule.leaveRule_leaveType.$pristine">
+                                            <p ng-message="required" class="error-class">Please Select Leave Type.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group">
+                                    <label class="control-label">Number of Leaves :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.leaveNumber"
+                                               name="leaveRule_leaveNumber" type="number"
+                                               placeholder="Enter Number of Leaves" required>
+                                    </div>
+                                    <div ng-messages="addLeaveRule.leaveRule_leaveNumber.$error"
+                                         ng-show="addLeaveRule.leaveRule_leaveNumber.$invalid && !addLeaveRule.leaveRule_leaveNumber.$pristine">
+                                        <p ng-message="required" class="error-class">Please Enter Number of Leaves.</p>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="addLeaveRule.$invalid"><i
+                                            class="fa fa-check"> </i> Create
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="leaveRule"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

@@ -1,0 +1,372 @@
+/**
+ * Created by jatin on 9/2/16.
+ */
+angular.module('app')
+    .service('configService', function($http, $q, CONFIG, Upload) {
+        return {
+            getJobCategories: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'jobCategory/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeJobCategory: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'jobCategory/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getLeaveTypes: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'leaveType/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeLeaveType: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'leaveType/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+
+            getLeaveRule: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'leaveRule/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getLeaveRuleRecord: function(id, type, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'leaveRule/getRecord/' + id + '/' + type
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+
+            changeStatus: function(id, status, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'leaveRule/' + id + '/' + status + '/changeStatus'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+
+            getTaxes: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'tax/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeTax: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'tax/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getBonus: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'bonus/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeBonus: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'bonus/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getOverTime: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'overTime/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeOverTime: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'overTime/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getShift: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'shift/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeShift: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'shift/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getPayGrades: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'payGrade/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removePayGrade: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'payGrade/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getAllowance: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'allowance/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeAllowance: function(id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'allowance/' + id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+
+            addEmployee: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/add', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+            },
+            updateEmployee: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/update', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+            },
+            getEmployee: function(query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/list?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            getRecord: function(modelName, id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + modelName + '/' + id + '/getRecord'
+                }).then(function(result) {
+
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            addEmployeeContactDetail: function(data, callback) {
+                return $http({
+                    method: 'POST',
+                    data: data,
+                    url: CONFIG.appUrl + 'employee/addEmployeeContactDetail'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            addEmployeeJobDetail: function(data, callback) {
+                return $http({
+                    method: 'POST',
+                    data: data,
+                    url: CONFIG.appUrl + 'employee/addEmployeeJobDetail'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            addEmployeeEducationDetail: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/addEducationDetail', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+            },
+            updateEmployeeEducationDetail: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/updateEducationDetail', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+            },
+            educationList: function(id , query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + id +  '/educationList?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            removeEmployeDetail: function(modalName, id, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + modalName + '/' +  id + '/remove'
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            addEmployeeCompanyDetail: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/addCompanyDetail', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+            },
+            companyList: function(id , query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + id +  '/companyList?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            updateEmployeeCompanyDetail: function(data, callback) {
+                Upload.upload({
+                    method: 'POST',
+                    url: CONFIG.appUrl + 'employee/updateCompanyDetail', //webAPI exposed to upload the file
+                    data: data //pass file as data, should be user ng-model
+                }).success(function(result) { //upload function returns a promise
+                    console.log(result);
+                    callback(null, result);
+                }).error(function(err) {
+                    callback(true, err);
+                });
+<<<<<<< HEAD
+            }
+=======
+            },
+            familyList: function(id , query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + id +  '/familyList?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+            reportingList: function(id , query, callback) {
+                return $http({
+                    method: 'GET',
+                    url: CONFIG.appUrl + 'employee/' + id +  '/reportingList?' + query
+                }).then(function(result) {
+                    callback(null, result.data);
+                }, function(error) {
+                    callback(error.data);
+                });
+            },
+>>>>>>> 7c9280908698e679fefc7293703555f67b9f730e
+
+        }
+    })

@@ -1,0 +1,285 @@
+<div id="main-content" ng-init="getRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Manage Employees </h3>
+                <ul class="breadcrumb">
+                    <li> <a href="javascript:void(0);"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span> </li>
+                    <li> <a href="javascript:void(0);">Configure </a> <span class="divider">&nbsp;</span> </li>
+                    <li><a href="javascript:void(0);">Contact Details</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Contact Details</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span> </div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+
+                                <form class="form-horizontal" name="editEmployeeContactDetail" ng-submit="updateRecord(editEmployeeContactDetail.$valid)">
+
+
+                                <!-- accordian0 START HERE --->
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-info active">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn"  ui-sref="employeeContactDetail({id:formData.employee})" > <span class="fa fa-phone first">&nbsp; </span> Contact Details <span class="fa fa-caret-up pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                        <div id="Contact-Details" >
+                                            <div class="panel-body">
+
+
+                                                <div class="clearfix">
+
+                                                </div>
+                                                <div class="space15"></div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Contact Number :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" ng-pattern="/^(\d)+$/" class="span6" class="setwid-input3 span2" data-ng-model="formData.contactNumber" name="employee_contactNumber" required type="text" placeholder="Enter Contact Number">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_contactNumber.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_contactNumber.$invalid && !editEmployeeContactDetail.employee_contactNumber.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Contact Number.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 15 characters.</div>
+                                                            <div ng-message="pattern" class="error-class">Numbers only, please.</div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Permanent Address :</label>
+                                                    <div class="controls">
+                                                        <textarea alphanumericonly class="span6 " ng-maxlength="500" rows="5" data-ng-model="formData.permanentAddress" name="employee_permanentAddress" required placeholder="Enter Permanent Address"></textarea>
+                                                        <div ng-messages="editEmployeeContactDetail.employee_permanentAddress.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_permanentAddress.$invalid && !editEmployeeContactDetail.employee_permanentAddress.$pristine">
+                                                            <div ng-message="required" class="error-class">Permanent Address.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Postal Code :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" ng-pattern="/^(\d)+$/" class="span6" class="setwid-input3 span2" data-ng-model="formData.zip" name="employee_zip" required type="text" placeholder="Enter Postal Code">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_zip.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_zip.$invalid && !editEmployeeContactDetail.employee_zip.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Postal Code.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 15 characters.</div>
+                                                            <div ng-message="pattern" class="error-class">Numbers only, please.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Email Address :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50" class="span6" class="setwid-input3 span2" data-ng-model="formData.email" name="employee_email" required type="email" placeholder="Enter Email">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_email.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_email.$invalid && !editEmployeeContactDetail.employee_email.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Email.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 50 characters.</div>
+                                                            <div ng-message="email" class="error-class">Not valid email!</div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Alternate Email :</label>
+                                                    <div class="controls">
+                                                        <input required ng-maxlength="50" class="span6" class="setwid-input3 span2" data-ng-model="formData.elternateEmail" name="employee_elternateEmail"  type="email" placeholder="Enter Alternate Email">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_elternateEmail.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_elternateEmail.$invalid && !editEmployeeContactDetail.employee_elternateEmail.$pristine">
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 50 characters.</div>
+                                                            <div ng-message="email" class="error-class">Not valid email!</div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Emergency Contact :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" class="span6" ng-pattern="/^(\d)+$/" class="setwid-input3 span2" data-ng-model="formData.emergencyContact" name="employee_emergencyContact" required type="text" placeholder="Enter Emergency Contact Number">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_emergencyContact.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_emergencyContact.$invalid && !editEmployeeContactDetail.employee_emergencyContact.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Emergency Contact Number.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 15 characters.</div>
+                                                            <div ng-message="pattern" class="error-class">Numbers only, please.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Relation :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50" class="span6" class="setwid-input3 span2" ng-pattern="/^[a-zA-Z]*$/" data-ng-model="formData.relation" name="employee_relation" required type="text" placeholder="Enter Relation">
+                                                        <div ng-messages="editEmployeeContactDetail.employee_relation.$error"
+                                                             ng-show="editEmployeeContactDetail.employee_relation.$invalid && !editEmployeeContactDetail.employee_relation.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Relation.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 50 characters.</div>
+                                                            <div ng-message="pattern" class="error-class">Text only, please.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <button class="btn btn-success" type="submit" ng-disabled="editEmployeeContactDetail.$invalid"><i
+                                                            class="fa fa-check"> </i> Save
+                                                    </button>
+                                                    <button class="btn btn-danger" type="button" ui-sref="employeeContactDetail({id:formData.employee})"><i
+                                                            class="fa fa-close"> </i> Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian0 END HERE --->
+
+                                    <!-- accordian1 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse" data-parent="#accordion"  ng-href="javascript:void(0);" > <span class="fa fa-newspaper-o first">&nbsp; </span> Document Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian1 END HERE --->
+
+                                    <!-- accordian2 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="employeeLicenseDetail({id:formData.employee})" > <span class="fa fa-clipboard first">&nbsp; </span> License Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian2 END HERE --->
+
+                                    <!-- accordian3 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn"  ui-sref="employeeJobDetail({id:formData.employee})"> <span class="fa fa-list-alt first">&nbsp; </span> Job Details <span class="fa fa-caret-up pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian3 END HERE --->
+
+                                    <!-- accordian4 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeFamilyDetail({id:formData.employee})" > <span class="fa fa-support first">&nbsp; </span> Dependents <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian4 END HERE --->
+
+                                    <!-- accordian5 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  href="javascript:void(0);" > <span class="fa fa-money first">&nbsp; </span> Pay Grade <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian5 END HERE --->
+
+                                    <!-- accordian6 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  href="javascript:void(0);"  > <span class="fa fa-users first">&nbsp; </span> Accounts <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian6 END HERE --->
+
+                                    <!-- accordian7 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ui-sref="addEmployeeEarningDetail({id:formData.employee})"  > <span class="fa fa-dollar first">&nbsp; </span> Earnings <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian7 END HERE --->
+
+                                    <!-- accordian8 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ui-sref="addEmployeeEducationDetail({id:formData.employee})" > <span class="fa fa-university first">&nbsp; </span> Education <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian8 END HERE --->
+
+                                    <!-- accordian9 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"   ui-sref="addEmployeeCompanyDetail({id:formData.employee})"> <span class="fa fa-briefcase first">&nbsp; </span> Work Experience <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian9 END HERE --->
+
+                                    <!-- accordian10 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  href="javascript:void(0);"  > <span class="fa fa-paper-plane first">&nbsp; </span> Boarding <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian10 END HERE --->
+
+                                    <!-- accordian11 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeReportingDetail({id:formData.employee})" > <span class="fa fa-pencil-square first">&nbsp; </span> Reporting <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian11 END HERE --->
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+
+        <!-- END ADVANCED TABLE widget-->
+
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

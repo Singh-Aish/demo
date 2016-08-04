@@ -1,0 +1,89 @@
+<html lang="en" data-ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>The Nature Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+        <script>
+            var baseUrl = location.protocol + "//" + location.host;
+            var isLocal = false;
+            console.log(baseUrl);
+
+            if (baseUrl.toLowerCase().indexOf("localhost") > -1) {
+                isLocal = true;
+            }
+
+            var identity = {
+                name: '@model.name',
+                email: '@model.email',
+                token: '@model.token'
+            };
+
+            console.log("Identity from Model");
+            console.log(identity);
+
+            // Temp Hack
+            //baseUrl = "http://private-4f0cf-naturehome.apiary-mock.com"
+        </script>
+        <!-- External Style References -->
+        <link href="/lib/semantic-ui/dist/components/menu.css" rel="stylesheet"/>
+        <link href="/lib/semantic-ui/dist/semantic.css" rel="stylesheet"/>
+        <link href="/lib/semantic-ui/dist/components/dropdown.css" rel="stylesheet"/>
+        <link href="/lib/slick.js/slick/slick.css" rel="stylesheet"/>
+        <link href="/lib/slick.js/slick/slick-theme.css" rel="stylesheet"/>
+        <link href="/other_components/fancybox-2.15/source/jquery.fancybox.css" rel="stylesheet"/>
+        <!--<link href="http://www.elevateweb.co.uk/wp-content/themes/radial/jquery.fancybox.css" rel="stylesheet" />-->
+        <!-- NextGN Style References -->
+        <!-- build:css /app/styles/main.css -->
+        <link href="/styles/main.css" rel="stylesheet"/>
+        <!-- endbuild -->
+    </head>
+    <body style="min-width: 1024px;">
+        Error page is rendered !!
+        <br/>
+
+        <div data-ui-view=""></div>
+        <div footer=""></div>
+        <!-- External Script References -->
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <script src="/lib/jqueryui/jquery-ui.min.js"></script>
+        <script src="/lib/moment/moment.js"></script>
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-cookies/angular-cookies.js"></script>
+        <script src="/lib/ui-router/release/angular-ui-router.js"></script>
+        <script src="/lib/underscore/underscore-min.js"></script>
+        <script src="/lib/toastr/toastr.js"></script>
+        <script src="/lib/ng-file-upload/ng-file-upload.js"></script>
+        <script src="/lib/ngstorage/ngStorage.js"></script>
+        <!--semantic ui-->
+        <script src="/lib/semantic-ui/dist/semantic.js"></script>
+        <!--<script src="/lib/semantic/dist/components/dropdown.js"></script>-->
+        <script src="/lib/slick.js/slick/slick.min.js"></script>
+        <script src="/other_components/elavatezoom/jquery.elevatezoom.js"></script>
+        <!--<script src="/other_components/fancybox-2.15/source/jquery.fancybox.js"></script>-->
+        <script src="/lib/angular-scroll/angular-scroll.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.1/angular-scroll.js"></script>-->
+        <!--<script src="jquery.elevatezoom.js"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>-->
+        <!-- build:js /app/scripts/scripts.js -->
+        <!-- NextGN Settings -->
+        <script src="/scripts/settings.js"></script>
+        <!-- NextGN Javascript Extensions -->
+        <script src="/scripts/extensions/storage.js"></script>
+        <!-- NextGN Modules -->
+        <script src="/scripts/modules/allModules.js"></script>
+        <!-- NextGN Routing -->
+        <script src="/scripts/routing/angRoutes.js"></script>
+        <!-- NextGN Services -->
+        <script src="/scripts/services/dataService.js"></script>
+        <!-- NextGN Directives -->
+        <script src="/scripts/directives/footer.js"></script>
+        <!-- NextGN Controllers -->
+        <script src="/scripts/controllers/indexCtrl.js"></script>
+        <script src="/scripts/controllers/homeCtrl.js"></script>
+        <script src="/scripts/controllers/songCtrl.js"></script>
+        <script src="/scripts/controllers/adminCtrl.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

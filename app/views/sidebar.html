@@ -1,0 +1,106 @@
+<div id="sidebar" class="nav-collapse collapse">
+    <div class="sidebar-toggler hidden-phone" data-animation="sidebar-menu" data-placement="left"></div>
+    <!-- BEGIN SIDEBAR MENU -->
+    <ul class="sidebar-menu">
+        <li class="has-sub" ui-sref="dashboard">
+            <a href="javascript:void(0);">
+                <span class="icon-box"> <i class="fa fa-dashboard"></i></span> Dashboard
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub">
+            <a ng-class="{ active: $state.includes('employee') || $state.includes('addEmployee')}"
+               ui-sref="employee">
+                <span class="icon-box"> <i class="fa fa-user"></i></span> Manage Employees
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub">
+          <a ng-class="{ active:  $state.includes('addComplianceDetail') }"
+               ui-sref="addComplianceDetail">
+                <span class="icon-box"> <i class="fa fa-book"></i></span> Statutory Compliance
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub">
+            <a ng-class="{ active: $state.includes('attendance') }"
+               ui-sref="attendance">
+                <span class="icon-box"> <i class="fa fa-users"></i></span> Attendance
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub">
+            <a ng-class= $state.includes('shiftManagement') }
+               ui-sref="shiftManagement">
+                <span class="icon-box"> <i class="fa fa-sitemap"></i></span> Shift Management
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub">
+            <a ng-class="{ active: $state.includes('lms') || $state.includes('leaveManagement') }"
+               ui-sref="leaveManagement">
+                <span class="icon-box"> <i class="fa fa-book"></i></span> LMS
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <!--  <li class="has-sub">
+            <a ng-class="{ active: $state.includes('lms') || $state.includes('compliance') }"
+               ui-sref="compliance">
+                <span class="icon-box"> <i class="fa fa-book"></i></span> Compliance
+                <span class="arrow"></span>
+            </a>
+        </li> -->
+        <li class="has-sub">
+            <a href="javascript:void(0);">
+                <span class="icon-box"> <i class="fa fa-money"></i></span> Salary Management
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="has-sub active">
+            <a href="javascript:void(0);" ng-click="subCategoryOpen = !subCategoryOpen">
+                <span class="icon-box"><i class="fa fa-cogs"></i></span> Configure
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub" ng-show="subCategoryOpen">
+                <li>
+                    <a ng-class="{ active: $state.includes('jobCategory') || $state.includes('addJobCategory') || $state.includes('editJobCategory') || $state.includes('detailJobCategory')}"
+                       ui-sref="jobCategory">Jobs Category</a></li>
+                <li><a ng-class="{ active: $state.includes('userRole') || $state.includes('addUserRole') || $state.includes('editUserRole') || $state.includes('detailJobCategory')}"
+                       ui-sref="userRole">User Roles</a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('leaveType') || $state.includes('addLeaveType') || $state.includes('editLeaveType') || $state.includes('detailLeaveType')}"
+                       ui-sref="leaveType">Leave Types </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('leaveRule') || $state.includes('addLeaveRule') || $state.includes('editLeaveRule') || $state.includes('detailLeaveRule')}"
+                       ui-sref="leaveRule">Leave Rules </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('tax') || $state.includes('addTax') || $state.includes('editTax') || $state.includes('detailTax')}"
+                       ui-sref="tax">Tax </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('payGrade') || $state.includes('addPayGrade') || $state.includes('editPayGrade') || $state.includes('detailPayGrade')}"
+                       ui-sref="payGrade">Pay Grades </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('shift') || $state.includes('addShift') || $state.includes('editShift') || $state.includes('detailShift')}"
+                       ui-sref="shift">Shifts </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('bonus') || $state.includes('addBonus') || $state.includes('editBonus') || $state.includes('detailBonus')}"
+                       ui-sref="bonus">Bonus </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('overTime') || $state.includes('addOverTime') || $state.includes('editOverTime') || $state.includes('detailOverTime')}"
+                       ui-sref="overTime">Over Time </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('allowance') || $state.includes('addAllowance') || $state.includes('editAllowance') || $state.includes('detailAllowance')}"
+                       ui-sref="allowance">Allowance </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('event') || $state.includes('addEvent') || $state.includes('editEvent') || $state.includes('detailEvent')}"
+                       ui-sref="event">Events </a></li>
+                <li>
+                    <a ng-class="{ active: $state.includes('task') || $state.includes('addTask') || $state.includes('editTask') || $state.includes('detailTask')}"
+                       ui-sref="task">Tasks </a></li>
+            </ul>
+        </li>
+        <li><a class="" href="javascript:void(0);"><span class="icon-box"><i class="fa fa-user"></i></span>Logout</a>
+        </li>
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>

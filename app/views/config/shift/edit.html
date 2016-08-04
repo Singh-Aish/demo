@@ -1,0 +1,150 @@
+<div id="main-content" ng-init="getRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Edit Shift</h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="shift">Shift List</a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Edit Shift</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> Edit Shift</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="editShift" ng-submit="updateRecord(editShift.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.name" name="shift_name" type="text"
+                                               placeholder="Enter Name" required alphanumeric ng-maxlength="100" maxlength="100">
+
+                                        <div ng-messages="editShift.shift_name.$error"
+                                             ng-show="editShift.shift_name.$invalid && !editShift.shift_name.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Name.</p>
+
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</p>
+
+                                            <p ng-message="alphanumeric" class="error-class">Please Enter Alphanumeric
+                                                Value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Shift Type :</label>
+
+                                    <div class="controls">
+                                        <label class="radio span1">
+                                            <input type="radio" ng-model="formData.type" value="Fixed" ng-click="formData.minimumHours=''">
+                                            Fixed
+                                        </label>
+                                        </label>
+                                        <label class="radio span3">
+                                            <input type="radio" ng-model="formData.type" value="Flexi" ng-click="formData.timeFrom='';formData.timeTo=''">
+                                            Flexible
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group" ng-if="formData.type=='Flexi'">
+                                    <label class="control-label">Minimum Hours:</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.minimumHours"
+                                               name="shift_minimumHours" type="number" placeholder="Enter Minimum Hours"
+                                               required>
+                                    </div>
+                                    <div ng-messages="editShift.shift_name.$error"
+                                         ng-show="editShift.shift_minimumHours.$invalid && !editShift.shift_minimumHours.$pristine">
+                                        <p ng-message="required" class="error-class">Please Enter Minimum Hours.</p>
+                                    </div>
+                                </div>
+                                <div class="control-group" ng-if="formData.type=='Fixed'">
+                                    <label class="control-label">Timings :</label>
+
+                                    <div class="controls">
+                                        <div class="span2">
+                                            <div class="input-append bootstrap-timepicker-component span12">
+                                                <select class="col-md-4 form-control" name="shift_timeFrom"
+                                                        data-ng-model="formData.timeFrom"
+                                                        ng-options="time for time in timeFrom"
+                                                        style="width:120px; margin-bottom:5px;" required>
+                                                    <option value="">-- Start Time --</option>
+                                                </select>
+                                            </div>
+                                            <div ng-messages="editShift.shift_timeFrom.$error"
+                                                 ng-show="editShift.shift_timeFrom.$invalid && !editShift.shift_timeFrom.$pristine">
+                                                <p ng-message="required" class="error-class">Select Start
+                                                    Time.</p>
+                                            </div>
+                                        </div>
+                                        <div class="span2 txt-center-desk"> To</div>
+                                        <div class="span2">
+                                            <div class="input-append bootstrap-timepicker-component span12">
+                                                <select class="col-md-4 form-control" name="shift_timeTo"
+                                                        data-ng-model="formData.timeTo"
+                                                        ng-options="time for time in timeTo"
+                                                        style="width:120px; margin-bottom:5px;" required>
+                                                    <option value="">-- End Time --</option>
+                                                </select>
+                                            </div>
+                                            <div ng-messages="editShift.shift_timeTo.$error"
+                                                 ng-show="editShift.shift_timeTo.$invalid && !editShift.shift_timeTo.$pristine">
+                                                <p ng-message="required" class="error-class">Select End Time.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea class="span6 " rows="5" data-ng-model="formData.description"
+                                                  name="shift_description" placeholder="Enter Description"
+                                                  ng-maxlength="500" maxlength="500"></textarea>
+
+                                        <div ng-messages="editShift.shift_description.$error"
+                                             ng-show="editShift.shift_description.$invalid && !editShift.shift_description.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="editShift.$invalid"><i
+                                            class="fa fa-check"> </i> Submit
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="shift"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

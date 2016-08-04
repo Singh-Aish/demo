@@ -1,0 +1,22 @@
+{
+    "name": "networc",
+    "version": "0.0.1",
+    "description": "NetworC - HRM",
+    "private": true,
+    "apidoc": {
+        "title": "NetworC- HRM api document",
+        "url": "https://localhost:1338"
+    },
+    "scripts": {
+        "start": "node ./bin/www",
+        "test": "mocha --timeout 99999"
+    },
+    "dependencies": {
+        "body-parser": "~1.8.1",
+        "cookie-parser": "~1.3.3",
+        "express": "^4.9.8",
+        "mongoose": "^4.0.1",
+        "serve-favicon": "^2.3.0",
+        "vash": "^0.7.12-1"
+    }
+}

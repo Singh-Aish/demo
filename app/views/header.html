@@ -1,0 +1,119 @@
+&nbsp;
+<div ng-if="!userLoggedIn" id="header" class="navbar navbar-inverse">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner no-bg-nav">
+        <div class="container-fluid">
+            <!-- BEGIN LOGO -->
+            <a class="brand" href="/"> <img src="img/logo.png" alt="NetworC"/> </a>
+            <!-- END LOGO -->
+            <!-- END  NOTIFICATION -->
+        </div>
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!-- END HEADER -->
+<!--BEGIN HEADER AFTER LOGGEDIN-->
+<div ng-if="userLoggedIn" id="header" class="navbar navbar-inverse navbar-fixed-top">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <!-- BEGIN LOGO -->
+            <a class="brand" href="/">
+                <img src="img/logo.png" alt="NetworC"/>
+            </a>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a class="btn btn-navbar collapsed" id="main_menu_trigger" data-toggle="collapse"
+               data-target=".nav-collapse">
+                <span class="fa fa-indent"></span>
+                <span class="arrow"></span>
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <div class="pull-right">
+                <div id="top_menu" class="nav notify-row">
+                    <!-- BEGIN NOTIFICATION -->
+                    <ul class="nav top-menu">
+                        <!-- BEGIN SETTINGS -->
+                        <!-- END SETTINGS -->
+                        <!-- BEGIN INBOX DROPDOWN -->
+                        <!-- END INBOX DROPDOWN -->
+                        <!-- BEGIN NOTIFICATION DROPDOWN -->
+                        <li class="dropdown" id="header_notification_bar">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge badge-warning">7</span>
+                            </a>
+                            <ul class="dropdown-menu extended notification">
+                                <li>
+                                    <p>You have 7 new notifications</p>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-important"><i class="fa fa-bolt"></i></span>
+                                        Lorem Ipsum
+                                        <span class="small italic">34 mins</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                                        Lorem Ipsum
+                                        <span class="small italic">1 Hours</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-important"><i class="fa fa-bolt"></i></span>
+                                        Lorem Ipsum
+                                        <span class="small italic">4 hrs</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-success"><i class="fa fa-plus"></i></span>
+                                        Lorem Ipsum
+                                        <span class="small italic">Just now</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-info"><i class="fa fa-bullhorn"></i></span>
+                                        Lorem Ipsum
+                                        <span class="small italic">10 mins</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">See all notifications</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END NOTIFICATION DROPDOWN -->
+                    </ul>
+                </div>
+                <div class="top-nav " style="float:right;">
+                    <ul class="nav pull-right top-menu">
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="img/avatar1_small.jpg" alt="">
+                                <span class="username">{{userData.name}}</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:void(0);"><i class="fa fa-user"></i> My Profile</a></li>
+                                <!--     <li><a href="#"><i class="fa fa-tasks"></i> My Tasks</a></li>
+                                     <li><a href="#"><i class="fa fa-calendar"></i> Calendar</a></li>-->
+                                <li class="divider"></li>
+                                <li><a ng-click="logout()"><i class="fa fa-key"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                    </ul>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+            </div>
+            <!-- END  NOTIFICATION -->
+        </div>
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>

@@ -1,0 +1,131 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Create Compliance </h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    
+                    <li><a href="javascript:void(0);">Create Compliance</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Create Compliance</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="addComplianceDetail" ng-submit="save(addComplianceDetail.$valid)">
+                            <div class="control-group">
+                                    <label class="control-label">Employee Name/Number </label>
+                                    <div class="controls">
+                                        <div angucomplete-alt
+                                             placeholder="Search Employee"
+                                             pause="100"
+                                             selected-object="employeeSelected"
+                                             local-data="allEmployees"
+                                             search-fields="name"
+                                             title-field="name"
+                                             minlength="1"
+                                             input-class="span6"
+                                             match-class="highlight">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="control-group">
+                                    <label class="control-label">Title :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="35" class="span6 "  data-ng-model="formData.title" name="compliance_title" placeholder="Enter Title"/>
+
+                                        <div ng-messages="addComplianceDetail.compliance_title.$error" ng-show="addComplianceDetail.compliance_title.$invalid && !addComplianceDetail.compliance_title.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 35 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea ng-maxlength="500" class="span6 " rows="5" data-ng-model="formData.description" name="compliance_description" placeholder="Enter Description" ng-maxlength="500" maxlength="500"></textarea>
+
+                                        <div ng-messages="addComplianceDetail.compliance_description.$error" ng-show="addComplianceDetail.compliance_description.$invalid && !addComplianceDetail.compliance_description.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                  <div class="control-group">
+                                    <label class="control-label">Date:    </label>
+                                    <div class="input-append bootstrap-timepicker-component span5">
+                                        <input style="margin-left: 2.2%" class=" m-ctrl-small timepicker-default datinput" jqdatepicker data-ng-model="formData.date" name="compliance_date" type="text" required readonly placeholder="From">
+                                        <span class="add-on">
+                                            <i class="fa fa-calendar-plus-o"></i>
+                                        </span>
+
+                                        <div ng-messages="addComplianceDetail.compliance_date.$error"
+                                             ng-show="addComplianceDetail.compliance_date.$invalid && !addComplianceDetail.compliance_date.$pristine">
+                                            <div ng-message="required" class="error-class">Please Enter Duration From</div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+
+                                <div class="control-group">
+                                    <label class="control-label">Creator :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="25" class="span6 "  data-ng-model="formData.creator" name="compliance_creator" placeholder="Enter Creator" />
+
+                                        <div ng-messages="addComplianceDetail.compliance_creator.$error" ng-show="addComplianceDetail.compliance_creator.$invalid && !addComplianceDetail.compliance_creator.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 25 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">File Attachment :</label>
+
+                                    <div class="controls">
+                                        <div data-provides="fileupload" class="fileupload fileupload-new span6"><input type="hidden" placeholder="Upload your File">
+
+                                            <div class="input-append">
+                                                 <span class="btn btn-file">
+                                                 <div>
+                                                 </div>
+                                                     <input ngf-select ng-model="formData.file" name="file" ngf-pattern="'.pdf,.jpg,video/*,!.jog'"
+                                                            required readonly  ngf-max-size="5MB" type="file" class="default">
+                                                 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="addComplianceDetail.$invalid"><i class="fa fa-check"> </i> Create</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>
+

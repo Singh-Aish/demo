@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Login page</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+        <link href="css/style.css" rel="stylesheet"/>
+        <link href="css/style_responsive.css" rel="stylesheet"/>
+        <link href="vendor/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet"/>
+        <link href="vendor/angular-toastr/dist/angular-toastr.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="vendor/bootstrap-timepicker/css/timepicker.less" />
+        <link rel="stylesheet" href="vendor/angucomplete-alt/angucomplete-alt.css" />
+        <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css" />
+        <link rel="stylesheet" href="vendor/jquery-timepicker-jt/jquery.timepicker.css"/>
+        <link  href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body class="fixed-top" ng-controller="AppController">
+        <header ng-include="'views/header.html'"></header>
+        <div id="container" class="row-fluid">
+            <aside ng-if="userLoggedIn" class="asidmenu" ng-include="'views/sidebar.html'"></aside>
+            <main ui-view=""></main>
+        </div>
+        <div ng-include="'views/footer.html'"></div>
+        <!-- External Script References -->
+        <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendor/ngstorage/ngStorage.js"></script>
+        <script type="text/javascript" src="vendor/angular-toastr/dist/angular-toastr.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
+        <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="vendor/angular-money-directive/dist/angular-money-directive.js"></script>
+        <script type="text/javascript" src="vendor/angular-messages/angular-messages.js"></script>
+        <script type="text/javascript" src="vendor/angular-confirm-modal/angular-confirm.min.js"></script>
+        <script type="text/javascript" src="vendor/ng-file-upload/ng-file-upload.min.js"></script>
+        <script type="text/javascript" src="vendor/ng-file-upload/ng-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="libs/jquery-ui-1.10.4.custom.min.js"></script>
+        <script type="text/javascript" src="vendor/checklist-model/checklist-model.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+        <script type="text/javascript" src="vendor/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-underscore-module/angular-underscore-module.js"></script>
+        <script type="text/javascript" src="vendor/underscore/underscore-min.js"></script>
+        <script type="text/javascript" src="vendor/angucomplete-alt/angucomplete-alt.js"></script>
+        <script type="text/javascript" src="vendor/angular-jquery-timepicker/src/timepickerdirective.js"></script>
+        <script type="text/javascript" src="vendor/jquery-timepicker-jt/jquery.timepicker.js"></script>
+        <script type="text/javascript" src="vendor/angular-mocks/angular-mocks.js"></script>
+        <script type="text/javascript" src="vendor/moment/min/moment.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+
+
+
+        <!-- demoSite Modules -->
+        <script src="scripts/modules/allModules.js"></script>
+        <script src="scripts/routing/angRoutes.js"></script>
+        <script src="scripts/controllers/appController.js"></script>
+        <script src="scripts/controllers/userController.js"></script>
+        <script src="scripts/controllers/configController.js"></script>
+        <script src="scripts/config/constants.js"></script>
+        <script src="scripts/services/services.js"></script>
+        <script src="scripts/services/configService.js"></script>
+        <script src="scripts/directives/validation.js"></script>
+        <script src="scripts/directives/directives.js"></script>
+        <script src="scripts/factory/interceptor.js"></script>
+        <!-- Added for sidemenu effects -->
+        <!--<script src="scripts/extensions/jquery-1.8.3.min.js"></script>-->
+        <!--<script src="scripts/extensions/jquery.blockui.js"></script>-->
+        <!--<script src="scripts/extensions/excanvas.js"></script>-->
+        <!--<script src="scripts/extensions/respond.js"></script>-->
+        <!--<script src="scripts/extensions/scripts.js"></script>-->
+        <!--<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+        <!--<script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>-->
+        <!--<script type="text/javascript" src="assets/data-tables/jquery.dataTables.js"></script>-->
+        <!--<script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>-->
+        <!-- Ended for sidemenu effects -->
+    </body>
+</html>

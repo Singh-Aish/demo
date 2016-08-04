@@ -1,0 +1,113 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Create Bonus </h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="bonus">Bonus Listing </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Create Bonus</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Create Bonus</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="addBonus" ng-submit="save(addBonus.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" data-ng-model="formData.name" name="bonus_name" type="text"
+                                               placeholder="Enter Name" required alphanumeric ng-maxlength="100" maxlength="100">
+
+                                        <div ng-messages="addBonus.bonus_name.$error"
+                                             ng-show="addBonus.bonus_name.$invalid && !addBonus.bonus_name.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Name.</p>
+
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</p>
+
+                                            <p ng-message="alphanumeric" class="error-class">Please Enter Alphanumeric
+                                                Value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Criteria :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.criteria" name="bonus_criteria" tabindex="-1"
+                                                type="text" required>
+                                            <option value=""> -- Choose Criteria --</option>
+                                            <option value="percentage">Salary Percentage</option>
+                                            <option value="amount">Amount ($)</option>
+                                        </select>
+                                        <input class="setwid-spn3 span3" ng-disabled="addBonus.bonus_criteria.$invalid"
+                                               data-ng-model="formData.value" name="bonus_value" type="text"
+                                               placeholder="0" money required>
+
+                                        <div class="clearfix"></div>
+                                        <div ng-messages="addBonus.bonus_criteria.$error"
+                                             ng-show="addBonus.bonus_criteria.$invalid && !addBonus.bonus_criteria.$pristine">
+                                            <p ng-message="required" class="error-class">Please Select Criteria.</p>
+                                        </div>
+                                        <div ng-messages="addBonus.bonus_value.$error"
+                                             ng-show="addBonus.bonus_value.$invalid && !addBonus.bonus_value.$pristine">
+                                            <p ng-message="money" class="error-class">Please Enter Valid Amount/Percentage.</p>
+
+                                            <p ng-message="required" class="error-class">Please Enter Value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea class="span6 " rows="5" data-ng-model="formData.description"
+                                                  name="bonus_description" placeholder="Enter Description"
+                                                  maxlength="500" ng-maxlength="500"></textarea>
+
+                                        <div ng-messages="addBonus.bonus_description.$error" ng-show="addBonus.tax_description.$invalid && !addBonus.bonus_description.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximun 500 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="addBonus.$invalid"><i
+                                            class="fa fa-check"> </i> Create
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="bonus"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

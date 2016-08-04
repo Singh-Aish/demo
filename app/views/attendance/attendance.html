@@ -1,0 +1,219 @@
+<!-- BEGIN PAGE -->
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Attendance/Reports</h3>
+                <ul class="breadcrumb">
+                    <li><a href="javascript:void(0);"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Home </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Attendance</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> ATTENDANCE</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="addAttendance" ng-submit="save(addAttendance.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Employee Name/Number :</label>
+                                    <div class="controls">
+                                        <div angucomplete-alt
+                                             placeholder="Search Employee"
+                                             pause="100"
+                                             selected-object="employeeSelected"
+                                             local-data="allEmployees"
+                                             search-fields="name,contactNumber"
+                                             title-field="name,contactNumber"
+                                             minlength="1"
+                                             input-class="span6"
+                                             match-class="highlight">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date :</label>
+
+                                    <div class="controls">
+                                        <div class="span6">
+                                            <div class="input-append bootstrap-timepicker-component span12">
+                                                <input class="add-clander-w timepicker-default datinput" data-ng-model="formData.date" name="employee_date" required readonly type="text" placeholder="8:00 AM">
+                                                <span class="add-on"> <i class="fa fa-calendar-plus-o"></i>
+                                                </span>
+
+                                                <div ng-messages="addAttendance.employee_date.$error"
+                                                     ng-show="addAttendance.employee_date.$invalid && !addAttendance.employee_date.$pristine">
+                                                    <div ng-message="required" class="error-class">Please Enter Date.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Punch In Time :</label>
+
+                                    <div class="controls">
+                                        <div class="span2">
+                                            <input placeholder="8:00 AM" ng-model="formData.punchIn" name="employee_punchIn" type="hidden"  ui-timepicker="options"/>
+                                            <span class="span-time-box" data-ng-model="formData.punchIn"  ui-timepicker required ng-change="calculateTime(formData.punchIn,formData.punchOut)">{{ formData.punchIn | date:'shortTime' }}</span><span class="span-time-box1"><i class="fa fa-clock-o"></i></span>
+                                            <div ng-messages="addAttendance.employee_punchIn.$error"
+                                                 ng-show="addAttendance.employee_punchIn.$invalid && !addAttendance.employee_punchIn.$pristine">
+                                                <div ng-message="required" class="error-class">Please Enter PunchIn Time.</div>
+                                            </div>
+                                        </div>
+                                        <div class="span2 txt-center-desk"> Punch Out</div>
+
+                                        <div class="span2">
+                                            <input ng-model="formData.punchOut" name="employee_punchOut" type="hidden" ui-timepicker="options"/>
+                                            <span class="span-time-box" data-ng-model="formData.punchOut"  ui-timepicker required ng-change="calculateTime(formData.punchIn,formData.punchOut)">{{ formData.punchOut | date:'shortTime' }}</span><span class="span-time-box1"><i class="fa fa-clock-o"></i></span>
+                                            <div ng-messages="addAttendance.employee_punchOut.$error"
+                                                 ng-show="addAttendance.employee_punchOut.$invalid && !addAttendance.employee_punchOut.$pristine">
+                                                <div ng-message="required" class="error-class">Please Enter PunchOut Time.</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Duration :</label>
+
+                                    <div class="controls">
+                                        <input class="span6" type="text" data-ng-model="formData.hours" name="employee_hours" readonly placeholder="Minimum Hours">
+                                        <div ng-messages="addAttendance.employee_hours.$error"
+                                             ng-show="addAttendance.employee_hours.$invalid && !addAttendance.employee_hours.$pristine">
+                                            <div ng-message="required" class="error-class">Please Enter Hours.</div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" ng-model="formData.overTime" name="employee_overTime"/>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="addAttendance.$invalid"><i
+                                            class="fa fa-check"> </i> Mark
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+                <div class="widget lms_widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> GENERATE REPORT</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="attendanceDetail" ng-submit="getEmployeeAttendance(attendanceDetail.$valid)">
+                                <div class="span12">
+                                    <div class="span4">
+                                        <div class="well gnrt_repo_wel">
+                                            <div class="span12">
+                                                <div ng-dropdown-multiselect="" options="example8data" selected-model="example8model" extra-settings="example8settings" ng-click="getEmployees()" translation-texts="selectRoleText" checkboxes="true"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span8">
+                                        <div class="well gnrt_repo_wel">
+                                            <div class="span12">
+                                                <div ng-dropdown-multiselect="" options="employees" selected-model="attendanceFilter.employeemodal" extra-settings="employeesetting" translation-texts="employeeText" name="employee" required checkboxes="true"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date :</label>
+
+                                    <div class="controls">
+                                        <div class="span2">
+                                            <div class="input-append bootstrap-timepicker-component">
+
+                                                <input class=" m-ctrl-small timepicker-default datinput" is-open="field.opened" type="text" ng-model="attendanceFilter.durationFrom" name="attendance_durationFrom" reportdate required readonly placeholder="From"/>
+                                                <span class="add-on"> <i class="fa fa-calendar-plus-o"></i> </span>
+
+                                                <div ng-messages="attendanceDetail.attendance_durationFrom.$error" ng-show="attendanceDetail.attendance_durationFrom.$invalid && !attendanceDetail.attendance_durationFrom.$pristine">
+                                                    <p ng-message="required" class="error-class">Please Enter From Date</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span2 txt-center-desk"> To</div>
+                                        <div class="span2">
+                                            <div class="input-append bootstrap-timepicker-component">
+                                                <input class=" m-ctrl-small timepicker-default datinput" is-open="opened" type="text" ng-model="attendanceFilter.durationTo" name="attendance_durationTo" reportdate required readonly placeholder="To"/>
+                                                <span class="add-on"> <i class="fa fa-calendar-plus-o"></i> </span>
+
+                                                <div ng-messages="attendanceDetail.attendance_durationTo.$error" ng-show="attendanceDetail.attendance_durationTo.$invalid && !attendanceDetail.attendance_durationTo.$pristine">
+                                                    <p ng-message="required" class="error-class">Please Enter To Date</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span2">
+                                            <button class="btn btn-success" type="submit" ng-disabled="attendanceDetail.$invalid"><i class="fa fa-check"> </i> View</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <div class="row leave_row">
+                                <div class="span12">
+                                    <label class="frm-strong-txt">Report Details :</label>
+                                </div>
+                            </div>
+                            <div class="widget-body table-responsive">
+                                <div class="clearfix">
+                                    <div class="space15"></div>
+                                    <table class="table table-striped table-bordered lm_tabel">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Employee</th>
+                                                <th>First In</th>
+                                                <th>Last Out</th>
+                                                <th>Over Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in items">
+                                                <td>{{item.created | date:'MM-dd-yyyy'}}</td>
+                                                <td>{{ item.employee.name }}</td>
+                                                <td>{{ item.punchIn | date: 'shortTime' }}</td>
+                                                <td>{{ item.punchOut | date: 'shortTime' }}</td>
+                                                <td>{{ item.overTime }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p ng-if="items.length == 0"> No records found !!</p>
+
+                                    <div class="">
+                                        <uib-pagination ng-show="items" total-items="totalRecords" items-per-page="size"
+                                                        ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize"
+                                                        class="pagination-sm" boundary-links="true" rotate="false"></uib-pagination>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END ADVANCED TABLE widget-->
+            <!-- END PAGE CONTENT-->
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->

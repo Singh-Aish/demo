@@ -1,0 +1,269 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Manage Employees </h3>
+                <ul class="breadcrumb">
+                    <li><a href="javascript:void(0);"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Configure </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Job Details</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Job Details</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <!-- accordian0 START HERE --->
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a class="accordian-btn" data-toggle="collapse" data-parent="#accordion" ui-sref="employeeContactDetail({id:employeeId})"> <span class="fa fa-phone first">&nbsp; </span> Contact Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a></h4>
+                                    </div>
+                                </div>
+                                <!-- accordian0 END HERE --->
+                                <!-- accordian1 START HERE --->
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a class="accordian-btn" data-toggle="collapse" data-parent="#accordion" href="#Document-Details"> <span class="fa fa-newspaper-o first">&nbsp; </span> Document Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a></h4>
+                                    </div>
+                                </div>
+                                <!-- accordian1 END HERE --->
+                                <!-- accordian2 START HERE --->
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a class="accordian-btn" data-toggle="collapse" ui-sref="employeeLicenseDetail({id:employeeId})"> <span class="fa fa-clipboard first">&nbsp; </span> License Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a></h4>
+                                    </div>
+                                </div>
+                                <!-- accordian2 END HERE --->
+                                <!-- accordian3 START HERE --->
+                                <form class="form-horizontal" name="addEmployeeJobDetail" ng-submit="save(addEmployeeJobDetail.$valid)">
+                                    <div class="panel panel-info active">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a class="accordian-btn" href="javascript:void();"> <span class="fa fa-list-alt first">&nbsp; </span> Job Details<span class="fa fa-caret-up pull-right ud-arrow">&nbsp; </span> </a></h4>
+                                        </div>
+                                        <div id="Job-Details" class="panel-collapse in">
+                                            <div class="panel-body">
+                                                <div class="space15"></div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Date Of Joining :</label>
+
+                                                    <div class="controls">
+                                                        <div class="span6">
+                                                            <div class="input-append bootstrap-timepicker-component span12">
+                                                                <input class="frm_input_text" jqdatepicker name="employee_dateOfJoining" data-ng-model="formData.dateOfJoining" type="text" readonly required placeholder="Enter Date Of Joining"/>
+                                                                  <span class="add-on">
+                                                                      <i class="fa fa-calendar-plus-o"></i>
+                                                                  </span>
+
+                                                                <div ng-messages="addEmployeeJobDetail.employee_dateOfJoining.$error"
+                                                                     ng-show="addEmployeeJobDetail.employee_dateOfJoining.$invalid && !addEmployeeJobDetail.employee_dateOfJoining.$pristine">
+                                                                    <div ng-message="required" class="error-class">Please Enter Date Of Joining.</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Probation Upto :</label>
+
+                                                    <div class="controls">
+                                                        <div class="input-append bootstrap-timepicker-component span12">
+                                                            <input class="frm_input_text" jqdatepicker name="employee_probationUpTo" data-ng-model="formData.probationUpTo" type="text" readonly required placeholder="Enter Probation Upto"/>
+                                                                  <span class="add-on">
+                                                                      <i class="fa fa-calendar-plus-o"></i>
+                                                                  </span>
+
+                                                            <div ng-messages="addEmployeeJobDetail.employee_probationUpTo.$error"
+                                                                 ng-show="addEmployeeJobDetail.employee_probationUpTo.$invalid && !addEmployeeJobDetail.employee_probationUpTo.$pristine">
+                                                                <div ng-message="required" class="error-class">Please Enter Date Of Probation Upto.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Title :</label>
+
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50" class="span6" ng-pattern="/^[a-zA-Z]*$/"  class="setwid-input3 span2" data-ng-model="formData.title" name="employee_title" required type="text" placeholder="Enter Title">
+                                                        <div ng-messages="addEmployeeJobDetail.employee_title.$error"
+                                                             ng-show="addEmployeeJobDetail.employee_title.$invalid && !addEmployeeJobDetail.employee_title.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Enter Title.</div>
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 50 characters.</div>
+                                                            <div ng-message="pattern" class="error-class">Text only, please.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                         
+                                                <div class="control-group">
+                                                    <label class="control-label">Job Category :</label>
+
+                                                    <div class="controls">
+                                                        <select class="setwid-spn3 span6 res-mr-botom14" data-ng-model="formData.jobCategory" tabindex="-1" name="employee_jobCategory"
+                                                                ng-options="item._id as item.name for item in jobCategory | orderBy:'name'"  ng-init="getJobCategory()" required>
+                                                            <option value=""> -- Choose Job Category --</option>
+                                                        </select>
+
+                                                        <div ng-messages="addEmployeeJobDetail.employee_jobCategory.$error"
+                                                             ng-show="addEmployeeJobDetail.employee_jobCategory.$invalid && !addEmployeeJobDetail.employee_jobCategory.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Select Job Category.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Country :</label>
+
+                                                    <div class="controls">
+                                                        <select class="setwid-spn3 span6 res-mr-botom14" data-ng-model="formData.country" tabindex="-1" name="employee_country" required>
+                                                            <option value=""> -- Choose Country --</option>
+                                                            <option value="U.S">U.S</option>
+                                                            <option value="U.K">U.K</option>
+                                                        </select>
+
+                                                        <div ng-messages="addEmployeeJobDetail.employee_country.$error"
+                                                             ng-show="addEmployeeJobDetail.employee_country.$invalid && !addEmployeeJobDetail.employee_country.$pristine">
+                                                            <div ng-message="required" class="error-class">Please Select Country.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Comments :</label>
+
+                                                    <div class="controls">
+                                                        <textarea ng-maxlength="500" alphanumeric class="span6" class="setwid-input3 span2" data-ng-model="formData.comment" name="employee_comment" type="text" placeholder="Enter Comments..."></textarea>
+
+                                                        <div ng-messages="addEmployeeJobDetail.employee_comment.$error"
+                                                             ng-show="addEmployeeJobDetail.employee_comment.$invalid && !addEmployeeJobDetail.employee_comment.$pristine">
+                                                            <div ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</div>
+                                                            <div ng-message="alphanumeric" class="error-class">Please Enter alphanumeric</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <input class="span6" class="setwid-input3 span2" data-ng-init="formData.employee=employeeId" data-ng-model="formData.employee" type="hidden">
+                                                    </div>
+                                                </div>
+
+                                                    <div class="form-actions">
+                                                        <button class="btn btn-success" type="submit" ng-disabled="addEmployeeJobDetail.$invalid"><i
+                                                                class="fa fa-check"> </i> Submit
+                                                        </button>
+                                                        <button class="btn btn-danger" type="button" ui-sref="employeeJobDetail({id:employeeId})"><i
+                                                                class="fa fa-close"> </i> Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                        </div>
+                                </form>
+                                <!-- accordian3 END HERE --->
+
+
+                                <!-- accordian4 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeFamilyDetail({id:employeeId})" > <span class="fa fa-support first">&nbsp; </span> Dependents <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian4 END HERE --->
+
+                                <!-- accordian5 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ng-href="javascript:void(0);"  > <span class="fa fa-money first">&nbsp; </span> Pay Grade <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian5 END HERE --->
+
+                                <!-- accordian6 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ng-href="javascript:void(0);"  > <span class="fa fa-users first">&nbsp; </span> Accounts <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian6 END HERE --->
+
+                                <!-- accordian7 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ui-sref="addEmployeeEarningDetail({id:employeeId})" > <span class="fa fa-dollar first">&nbsp; </span> Earnings <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian7 END HERE --->
+
+                                <!-- accordian8 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ui-sref="addEmployeeEducationDetail({id:employeeId})" > <span class="fa fa-university first">&nbsp; </span> Education <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian8 END HERE --->
+
+                                <!-- accordian9 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeCompanyDetail({id:employeeId})"  > <span class="fa fa-briefcase first">&nbsp; </span> Work Experience <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian9 END HERE --->
+
+                                <!-- accordian10 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ng-href="javascript:void(0);"  > <span class="fa fa-paper-plane first">&nbsp; </span> Boarding <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian10 END HERE --->
+
+                                <!-- accordian11 START HERE --->
+
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeReportingDetail({id:employeeId})"  > <span class="fa fa-pencil-square first">&nbsp; </span> Reporting <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                    </div>
+                                </div>
+
+                                <!-- accordian11 END HERE --->
+                            </div>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

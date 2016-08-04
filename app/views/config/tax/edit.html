@@ -1,0 +1,114 @@
+<div id="main-content" ng-init="getRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Edit Tax </h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="tax">Tax Listing </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Edit Tax</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Edit Tax</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="editTax" ng-submit="updateRecord(editTax.$valid)">
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="100" class="span6" data-ng-model="formData.name" name="tax_name" type="text"
+                                               placeholder="Enter Name" required alphanumeric maxlength="100">
+
+                                        <div ng-messages="editTax.tax_name.$error"
+                                             ng-show="editTax.tax_name.$invalid && !editTax.tax_name.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Name.</p>
+
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</p>
+
+                                            <p ng-message="alphanumeric" class="error-class">Please Enter Alphanumeric
+                                                Value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Deduction :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span3 res-mr-botom14"
+                                                data-ng-model="formData.criteria" name="tax_criteria" tabindex="-1"
+                                                type="text" required>
+                                            <option value=""> -- Choose Criteria --</option>
+                                            <option value="percentage">Salary Percentage</option>
+                                            <option value="amount">Amount ($)</option>
+                                        </select>
+                                        <input class="setwid-spn3 span3" ng-disabled="editTax.tax_criteria.$invalid"
+                                               data-ng-model="formData.value" name="tax_value" type="text"
+                                               placeholder="0" money required>
+
+                                        <div class="clearfix"></div>
+                                        <div ng-messages="editTax.tax_criteria.$error"
+                                             ng-show="editTax.tax_criteria.$invalid && !editTax.tax_criteria.$pristine">
+                                            <p ng-message="required" class="error-class">Please Select Criteria.</p>
+                                        </div>
+                                        <div ng-messages="editTax.tax_value.$error"
+                                             ng-show="editTax.tax_value.$invalid && !editTax.tax_value.$pristine">
+                                            <p ng-message="required" class="error-class">Please Enter Value.</p>
+
+                                            <p ng-message="money" class="error-class">Please Enter Valid Amount/Percentage.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <textarea class="span6 " rows="5" data-ng-model="formData.description"
+                                                  name="tax_description" placeholder="Enter Description"
+                                                  ng-maxlength="500"></textarea>
+
+                                        <div ng-messages="editTax.tax_description.$error"
+                                             ng-show="editTax.tax_description.$invalid && !editTax.tax_description.$pristine">
+                                            <p ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="editTax.$invalid"><i
+                                            class="fa fa-check"> </i> Submit
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="tax"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

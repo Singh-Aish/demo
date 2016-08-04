@@ -1,0 +1,241 @@
+<div id="main-content" ng-init="getContactRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Manage Employees </h3>
+                <ul class="breadcrumb">
+                    <li> <a href="javascript:void(0);"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span> </li>
+                    <li> <a href="javascript:void(0);">Configure </a> <span class="divider">&nbsp;</span> </li>
+                    <li><a href="javascript:void(0);">Contact Details</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-file-text"></i> Contact Details</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span> </div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+
+                                <form class="form-horizontal" name="addEmployeeContactDetail" ng-submit="save(addEmployeeContactDetail.$valid)">
+
+
+
+                                <!-- accordian0 START HERE --->
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-info active">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" href="javascript:void(0);"  > <span class="fa fa-phone first">&nbsp; </span> Contact Details <span class="fa fa-caret-up pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                        <div id="Contact-Details" >
+                                            <div class="panel-body">
+                                                <div class="clearfix">
+                                                    <div ng-if="formData" class="btn-group pull-right">
+                                                        <button class="btn btn-success" ui-sref="editEmployeeContactDetail({id:formData._id})" type="submit"><i class="fa fa-edit"> </i> Edit</button>
+                                                    </div>
+                                                    <div ng-if="!formData" class="btn-group pull-right">
+                                                        <button class="btn btn-success" ui-sref="addEmployeeContactDetail({id:employeeId})" type="submit"><i class="fa fa-edit"> </i> Add</button>
+                                                    </div>
+                                                </div>
+                                                <div class="space15"></div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Contact Number :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" disabled class="span6" class="setwid-input3 span2" data-ng-model="formData.contactNumber" name="employee_contactNumber" required type="text" placeholder="Enter Contact Number">
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Permanant Address :</label>
+                                                    <div class="controls">
+                                                        <textarea disabled class="span6 " ng-maxlength="500" rows="5" data-ng-model="formData.permanentAddress" name="employee_permanentAddress" required placeholder="Enter Permanent Address"></textarea>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Postal Code :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" disabled class="span6" class="setwid-input3 span2" data-ng-model="formData.zip" name="employee_zip" required type="text" placeholder="Enter Postal Code">
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Email Address :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50" disabled  class="span6" class="setwid-input3 span2" data-ng-model="formData.email" name="employee_email" required type="email" placeholder="Enter Email">
+
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    <label class="control-label">Alternate Email :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50"  disabled class="span6" class="setwid-input3 span2" data-ng-model="formData.elternateEmail" name="employee_elternateEmail"  type="email" placeholder="Enter Elternate Email">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Emergency Contact :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="15" disabled class="span6" class="setwid-input3 span2" data-ng-model="formData.emergencyContact" name="employee_emergencyContact" required type="text" placeholder="Enter Emergency Contact Number">
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Relation :</label>
+                                                    <div class="controls">
+                                                        <input ng-maxlength="50" disabled class="span6" class="setwid-input3 span2" data-ng-model="formData.relation" name="employee_relation" required type="text" placeholder="Enter Relation">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian0 END HERE --->
+
+                                    <!-- accordian1 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse" data-parent="#accordion" ng-href="javascript:void(0);"> <span class="fa fa-newspaper-o first">&nbsp; </span> Document Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian1 END HERE --->
+
+                                    <!-- accordian2 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="employeeLicenseDetail({id:employeeId})"  > <span class="fa fa-clipboard first">&nbsp; </span> License Details <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian2 END HERE --->
+
+                                    <!-- accordian3 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn"  ui-sref="employeeJobDetail({id:employeeId})" > <span class="fa fa-list-alt first">&nbsp; </span> Job Details <span class="fa fa-caret-up pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian3 END HERE --->
+
+                                    <!-- accordian4 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeFamilyDetail({id:employeeId})"  > <span class="fa fa-support first">&nbsp; </span> Dependents <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian4 END HERE --->
+
+                                    <!-- accordian5 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  href="javascript:void(0);" > <span class="fa fa-money first">&nbsp; </span> Pay Grade <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian5 END HERE --->
+
+                                    <!-- accordian6 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  href="javascript:void(0);" > <span class="fa fa-users first">&nbsp; </span> Accounts <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian6 END HERE --->
+
+                                    <!-- accordian7 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse" ui-sref="addEmployeeEarningDetail({id:employeeId})" > <span class="fa fa-dollar first">&nbsp; </span> Earnings <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian7 END HERE --->
+
+                                    <!-- accordian8 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle = "collapse"  ui-sref="addEmployeeEducationDetail({id:employeeId})"  > <span class="fa fa-university first">&nbsp; </span> Education <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian8 END HERE --->
+
+                                    <!-- accordian9 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse" ui-sref="addEmployeeCompanyDetail({id:employeeId})"  > <span class="fa fa-briefcase first">&nbsp; </span> Work Experience <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian9 END HERE --->
+
+                                    <!-- accordian10 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeBoardingDetail({id:employeeId})" > <span class="fa fa-paper-plane first">&nbsp; </span> Boarding <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian10 END HERE --->
+
+                                    <!-- accordian11 START HERE --->
+
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a class="accordian-btn" data-toggle="collapse"  ui-sref="addEmployeeReportingDetail({id:employeeId})" > <span class="fa fa-pencil-square first">&nbsp; </span> Reporting <span class="fa fa-caret-down pull-right ud-arrow">&nbsp; </span> </a> </h4>
+                                        </div>
+                                    </div>
+
+                                    <!-- accordian11 END HERE --->
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+
+        <!-- END ADVANCED TABLE widget-->
+
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

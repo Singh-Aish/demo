@@ -1,0 +1,103 @@
+<div id="main-content" ng-init="getRoleData()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> User Role Permission </h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="userRole">User Role Listing </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">User Role Permission</a><span class="divider-last">&nbsp;</span>
+                    </li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list"></i> User Role Permission</h4>
+                    </div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <div class="control-group">
+                                <label class="control-label">Role Name :</label>
+
+                                <div class="controls">
+                                    <label class="label span6">{{data.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                    <div class="widget-body table-responsive" ng-init="getMenus()">
+                        <div class="clearfix" ng-init="getAccessLevel()">
+                            <form class="form-horizontal sky_blu_bg" ng-submit="savePermission()">
+                                <ul class="control-group" ng-repeat="item in menuDetail">
+                                    <li>
+                                        <label class="control-label">{{ item.name }}</label>
+
+                                        <div class="controls">
+                                            <label class="span1">
+                                                <input type="radio" ng-click="checkModelData(item._id,1)" ng-model="formData[item._id]" value="1">
+                                                Read
+                                            </label>
+                                            <label class="span1">
+                                                <input type="radio" ng-click="checkModelData(item._id,2)" ng-model="formData[item._id]" value="2">
+                                                Write
+                                            </label>
+                                            <label class="span1">
+                                                <input type="radio" ng-click="checkModelData(item._id,0)" ng-model="formData[item._id]" value="0">
+                                                None
+                                            </label>
+                                        </div>
+                                        <ul class="space15" ng-repeat="child in item.child">
+                                            <li>
+                                                <label class="control-label">{{ child.name }} </label>
+
+                                                <div class="controls">
+                                                    <label class="span1">
+                                                        <input type="radio" ng-disabled="formData[child.parent]==0" ng-model="formData[child.id]" value="1">
+                                                        Read
+                                                    </label>
+                                                    <label class="span1">
+                                                        <input type="radio" ng-disabled="formData[child.parent]!=2" ng-model="formData[child.id]" value="2">
+                                                        Write
+                                                    </label>
+                                                    <label class="span1">
+                                                        <input type="radio" ng-model="formData[child.id]" value="0">
+                                                        None
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit"><i
+                                            class="fa fa-check"> </i> Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

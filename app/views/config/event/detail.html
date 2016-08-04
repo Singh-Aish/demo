@@ -1,0 +1,75 @@
+<div id="main-content" ng-init="getRecord()">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Event Detail</h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="event">Event List</a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Event Detail</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list"></i> Event Detail</h4>
+                    </div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-success" type="submit" ui-sref="editEvent({id:formData._id})"><i
+                                        class="fa fa-edit"> </i> Edit
+                                </button>
+                                <button class="btn btn-danger" type="button" ng-click="removeRecord(formData._id)"><i
+                                        class="fa fa-trash-o"> </i> Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <form class="form-horizontal sky_blu_bg" action="#">
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <label class="label span6">{{ formData.name }}</label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Description :</label>
+
+                                    <div class="controls">
+                                        <label class="label span6">{{formData.description}}</label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Type :</label>
+
+                                    <div class="controls">
+                                        <label class="label span6">{{ formData.type}}</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>

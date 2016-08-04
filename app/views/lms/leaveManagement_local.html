@@ -1,0 +1,502 @@
+<!-- BEGIN PAGE -->
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Leave Management System </h3>
+                <ul class="breadcrumb">
+                    <li><a href="javascript:void(0);"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Home </a> <span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Apply for Leave</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> Apply For Leave</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);" class="fa fa-chevron-down"></a> <a href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <div class="row leave_row">
+                                <div class="span12">
+                                    <label class="frm-strong-txt">Search Employee Leave Details :</label>
+                                </div>
+                            </div>
+                            <div class="row leave_row">
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="input-prepend input-append lms_search_box"> <span class="add-on">
+                                        <select data-ng-model="search.key" tabindex="-1" required>
+                                            <option value=""> Choose</option>
+                                            <option value="name">Employee Name</option>
+                                            <option value="employeeId">Employee ID</option>
+                                        </select></span>
+                                            <input class="span12 " type="text" data-ng-model="search.keyword" placeholder="Search with Employee Name or Employee ID">
+                                        <span class="add-on"><button type="button" ng-click="search()"
+                                                                     ng-disabled="!search.key || !search.keyword"><i class="fa fa-search">&nbsp; </i></button></span>
+                                            <span class="add-on"><button class="" type="button" ng-click="reset()"><i class="fa fa-trash-o">&nbsp; </i></button></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="leaveRules">
+
+                            <div class="row leave_row">
+                                <div class="span12">
+                                    <label class="frm-strong-txt">Available Leave Summary for {{ employeeDetail.name }} ({{ employeeDetail.employeeId }}):</label>
+                                </div>
+                            </div>
+                            <div class="row leave_card_row">
+                                <div class="span3" ng-repeat="item in leaveRules">
+                                    <div class="leave_card blue_0">
+                                        <div class="leav_media">
+                                            <p class="lm_left">{{ item.leaveType.name }}</p>
+
+                                            <p class="lm_right"><span class="lm_digit">{{ item.leaveNumber  }} </span> <span class="lm_type">{{ item.leaveType.name  }} </span></p>
+                                        </div>
+                                        <div class="lm_apply_leav">
+                                            <p class="lm_apply_left"><a href="" data-toggle="modal" data-target="#lm_leave_modal1">Apply Leaves</a></p>
+
+                                            <p class="lm_apply_right"><i class="fa fa-arrow-circle-right"> </i></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row leave_row">
+                                <div class="span12">
+                                    <label class="frm-strong-txt">Leave Pool for John Doe (803299):</label>
+                                </div>
+                            </div>
+                            <div class="widget-body table-responsive">
+                                <div class="clearfix">
+                                    <div class="space15"></div>
+                                    <table class="table table-striped table-bordered lm_tabel">
+                                        <thead>
+                                            <tr>
+                                                <th>Status</th>
+                                                <th>CL</th>
+                                                <th>EL</th>
+                                                <th>SL</th>
+                                                <th>ML</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Approved</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <td>NA</td>
+                                                <td class="btn_wrap">
+                                                    <button class="btn btn-primary" data-toggle="modal" data-target="#Rejected_leave_modal1"><i class="fa fa-pencil fa fa-white"></i> Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rejected</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <td>NA</td>
+                                                <td class="btn_wrap">
+                                                    <button class="btn btn-primary" data-toggle="modal" data-target="#Rejected_leave_modal1"><i class="fa fa-pencil fa fa-white"></i> Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pending</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <td>NA</td>
+                                                <td class="btn_wrap">
+                                                    <button class="btn" onclick="window.location.href='Leave_Type_Detail.html'"><i class="fa fa-eye"></i> View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                                <!-- Modal for Casul Leave START-->
+                                <div class="modal fade lm_apply_leav_modl" id="lm_leave_modal1" tabindex = "-1" role = "dialog"
+                                     aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class = "modal-header">
+                                                <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                                                    &times;
+                                                </button>
+
+                                                <h4 class = "modal-title" id = "myModalLabel">
+                                                    Apply Casual Leaves for john Doe (#803299)
+                                                </h4>
+                                            </div>
+
+                                            <div class = "modal-body">
+                                                <form class="form-horizontal" name="applyLeave" ng-submit="save(applyLeave.$valid)" action="#">
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">Employee Name/Number :</label>
+                                                        <div class="controls">
+                                                            <label class="label span10">{{ employeeDetail.name }}</label>
+                                                            <input class="span6 setwid-input3 span2" data-ng-init="formData.employee=employeeDetail._id" data-ng-model="formData.employee" type="hidden">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">Contact Number :</label>
+                                                        <div class="controls">
+                                                            <label class="label span10">9257859736</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">Leave Category :</label>
+                                                        <div class="controls">
+                                                            <label class="label span10">{{ leaveType.name }}</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">Date Applied :</label>
+                                                        <div class="controls">
+                                                            <div class="span4" >
+                                                                <div class="bootstrap-timepicker-component span12">
+                                                                    <input class=" m-ctrl-small timepicker-default datinput" is-open="field.opened" type="text" ng-model="formData.durationFrom" name="leave_durationFrom"  expiredate required readonly placeholder="From"/>
+                                                                    <span class="add-on"> <i class="fa fa-calendar-plus-o"></i> </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="span2 txt-center-desk"> To </div>
+                                                            <div class="span4">
+                                                                <div class="bootstrap-timepicker-component span12">
+                                                                    <input class=" m-ctrl-small timepicker-default datinput" is-open="opened" type="text" ng-model="formData.durationTo" name="leave_durationTo"  expiredate required readonly placeholder="To"/>
+                                                                    <span class="add-on"> <i class="fa fa-calendar-plus-o"></i> </span>
+                                                                    <input data-ng-model="dayDifference" type="hidden"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--
+                                                    <div class="control-group">
+                                                        <label class="control-label">Duration :</label>
+                                                        <div class="controls">
+                                                            <label class="radio">
+                                                                <div  class="radio"> <span class="checked">
+                                                                    <input type="radio" value="Fixed" name="Fixed" >
+                                                                    </span>
+                                                                </div>
+                                                                Half Day
+                                                            </label>
+                                                            <label class="radio">
+                                                                <div  class="radio"> <span >
+                                                                    <input type="radio" checked="" value="Flexible" name="Flexible" >
+                                                                    </span>
+                                                                </div>
+                                                                Full Day
+                                                            </label>
+                                                        </div>
+                                                    </div> -->
+
+                                                    <div class="control-group">
+                                                        <label class="control-label">Reason for Leave :</label>
+                                                        <div class="controls">
+                                                            <textarea class="span10" ng-maxlength="500" data-ng-model="formData.description" name="description" rows="3" placeholder="Reason for Leave" ng-click="dayDiff(formData.durationFrom,formData.durationTo)" required>  </textarea>
+                                                            <div ng-messages="applyLeave.description.$error" ng-show="applyLeave.description.$invalid && !applyLeave.description.$pristine">
+                                                                <p ng-message="required" class="error-class">Please Enter Reason</p>
+                                                                <p ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</p>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-actions">
+                                                        <button class="btn btn-success" type="submit" ng-disabled="applyLeave.$invalid" ><i class="fa fa-check"> </i> Apply</button>
+                                                        <button class="btn btn-danger" type="button" onclick="window.location.href='Taxes_Listing'"><i class="fa fa-close"> </i> Cancel</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!--   <div class = "modal-footer">
+                                                  <button type = "button" class = "btn btn-default" data-dismiss = "modal">
+                                                     Close
+                                                  </button>
+
+                                                  <button type = "button" class = "btn btn-primary">
+                                                     Submit changes
+                                                  </button>
+                                               </div>-->
+
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+
+                                </div>
+                                <!-- /.modal for Casual Leave END -->
+
+
+                                <!-- Modal for Rejected_leave START-->
+                                <div class="modal fade aplm_modal" id="Rejected_leave_modal1" tabindex="-1" role="dialog"
+                                     aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    &times;
+                                                </button>
+
+                                                <h4 class = "modal-title" id = "myModalLabel">
+                                                    Rejected Leaves for john Doe (#803299)
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" action="#">
+                                                    <div class="widget-body table-responsive">
+                                                        <div class="clearfix">
+
+                                                            <table class="table table-striped table-bordered lm_tabel" >
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th >Leave Type  modal</th>
+                                                                        <th >Date From </th>
+                                                                        <th>Date To </th>
+                                                                        <th>Duration </th>
+                                                                        <th>Assigned To </th>
+                                                                        <th >Actions </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success" onclick="window.location.href='Bonus_Listing.html'" type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success" onclick="window.location.href='Bonus_Listing.html'" type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success" onclick="window.location.href='Bonus_Listing.html'" type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </form>
+                                            </div>
+
+
+
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+
+                                </div><!-- /.modal for Rejected_leave END -->
+
+
+                                <!-- Modal for Pending_leave START-->
+                                <div class="modal fade aplm_modal" id="Pending_leave_leave_modal1" tabindex="-1" role="dialog"
+                                     aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    &times;
+                                                </button>
+
+                                                <h4 class = "modal-title" id = "myModalLabel">
+                                                    Aplied Leaves for john Doe (#803299)
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" action="#">
+                                                    <div class="widget-body table-responsive">
+                                                        <div class="clearfix">
+
+                                                            <table class="table table-striped table-bordered lm_tabel" >
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th >Leave Type  modal</th>
+                                                                        <th >Date From </th>
+                                                                        <th>Date To </th>
+                                                                        <th>Duration </th>
+                                                                        <th>Assigned To </th>
+                                                                        <th >Actions </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success"  type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                            <button class="btn btn-danger"  type="button">
+                                                                                <i class="fa fa-close"> </i>
+                                                                                Reject
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success"  type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                            <button class="btn btn-danger"  type="button">
+                                                                                <i class="fa fa-close"> </i>
+                                                                                Reject
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td><span>CL </span> </td>
+                                                                        <td>24/02/2016 </td>
+                                                                        <td>25/02/2016  </td>
+                                                                        <td>Full Day </td>
+                                                                        <td>
+                                                                            <select class="setwid-spn3 span12 res-mr-botom14">
+                                                                                <option value="Category 1">Select a Assignee</option>
+
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="btn_wrap" >
+                                                                            <button class="btn btn-success"  type="submit">
+                                                                                <i class="fa fa-check"> </i>
+                                                                                Approve
+                                                                            </button>
+                                                                            <button class="btn btn-danger"  type="button">
+                                                                                <i class="fa fa-close"> </i>
+                                                                                Reject
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </form>
+                                            </div>
+
+
+
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+
+                                </div><!-- /.modal for Pending_leave END -->
+
+                            </div>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>
+<!-- END PAGE -->
+
+<!-- END CONTAINER -->

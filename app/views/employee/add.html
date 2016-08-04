@@ -1,0 +1,198 @@
+<div id="main-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN THEME CUSTOMIZER-->
+                <!-- END THEME CUSTOMIZER-->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title"> Add Employee</h3>
+                <ul class="breadcrumb">
+                    <li><a ui-sref="dashboard"><i class="fa fa-home"></i></a><span class="divider">&nbsp;</span></li>
+                    <li><a ui-sref="employee">Employee List</a><span class="divider">&nbsp;</span></li>
+                    <li><a href="javascript:void(0);">Add Employee</a><span class="divider-last">&nbsp;</span></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <!-- BEGIN ADVANCED TABLE widget-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE widget-->
+                <div class="widget">
+                    <div class="widget-title">
+                        <h4><i class="fa fa-list-alt"></i> Employment Details</h4>
+                        <span class="tools" style="display:none;"> <a href="javascript:void(0);"
+                                                                      class="fa fa-chevron-down"></a> <a
+                                href="javascript:void(0);" class="fa fa-remove"></a> </span></div>
+                    <div class="widget-body table-responsive">
+                        <div class="clearfix">
+                            <form class="form-horizontal" name="addEmployee" ng-submit="save(addEmployee.$valid)">
+
+                                <div class="control-group">
+                                    <label class="control-label">Upload Picture :</label>
+
+                                    <div class="controls">
+                                        <div class="span12">
+                                            <div class="fileupload-new thumbnail upload_wrp">
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" ng-show="formData.image == undefined"/>
+
+                                                <div ng-if="formData.image != undefined">
+                                                    <img ngf-thumbnail="formData.image || '/thumb.jpg'">
+                                                </div>
+                                            </div>
+                                            <div class="span6">
+                                                <div class="file_button_container" ngf-select ng-model="formData.image" name="image" ngf-pattern="'image/*'"
+                                                     ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                                     ngf-resize="{width: 200, height: 200}"><span> Upload Image</span></div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="control-group">
+                                    <label class="control-label">Name :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="100" class="setwid-input3 span2" data-ng-model="formData.name" name="employee_name" alphanumeric required type="text" placeholder="First Name">
+
+                                      
+                                        <div ng-messages="addEmployee.employee_name.$error"
+                                             ng-show="addEmployee.employee_name.$invalid && !addEmployee.employee_name.$pristine">
+                                            <div ng-message="required" class="error-class">Please Enter First Name.</div>
+                                            <div ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</div>
+                                            <div ng-message="alphanumeric" class="error-class">Please Enter alphanumeric</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Employee ID :</label>
+
+                                    <div class="controls">
+                                       <input  required="required" numbers-only="numbers-only" min="0" ng-maxlength="50" class="setwid-input3 span2" data-ng-model="formData.employeeId" name="employee_employeeId" required type="num" placeholder="Enter Employe ID" value="" numbersOnly/>
+
+                                        <div ng-messages="addEmployee.employee_employeeId.$error"
+                                             ng-show="addEmployee.employee_employeeId.$invalid && !addEmployee.employee_employeeId.$pristine">
+                                            <div ng-message="required" class="error-class">Please Enter Employee Id.</div>
+                                            <div ng-message="numbersOnly" class="error-class">Please Enter Only Numbers</div>
+                                            <div ng-message="maxlength" class="error-class">This field accept maximum 500 characters.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Gender :</label>
+
+                                    <div class="controls" ng-init="formData.gender='Fixed'">
+                                        <label class="radio span1">
+                                            <input type="radio" ng-model="formData.gender" value="Male">
+                                            Male
+                                        </label>
+                                        <label class="radio span3">
+                                            <input type="radio" ng-model="formData.gender" value="Female"> Female
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Marital Status :</label>
+
+                                    <div class="controls">
+                                        <select class="setwid-spn3 span6 res-mr-botom14" data-ng-model="formData.maritalStatus" tabindex="-1" name="employee_maritalStatus" required>
+                                            <option value=""> -- Choose MaritalStatus --</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Divorced">Divorced</option>
+                                        </select>
+
+                                        <div ng-messages="addEmployee.employee_maritalStatus.$error"
+                                             ng-show="addEmployee.employee_maritalStatus.$invalid && !addEmployee.employee_maritalStatus.$pristine">
+                                            <div ng-message="required" class="error-class">Please Select Mariatl Status.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date Of Birth :</label>
+
+                                    <div class="controls">
+                                        <div class="span6">
+                                            <div class="input-append bootstrap-timepicker-component span12">
+
+                                                <input class="frm_input_text"  dateofbirth name="employee_dateOfBirth" data-ng-model="formData.dateOfBirth" type="text" readonly required placeholder="Enter Date Of Birth"/>
+                                                <span class="add-on">
+                                                 <i class="fa fa-calendar-plus-o"></i>
+                                                </span>
+
+                                                <div ng-messages="addEmployee.employee_dateOfBirth.$error"
+                                                     ng-show="addEmployee.employee_dateOfBirth.$invalid && !addEmployee.employee_dateOfBirth.$pristine">
+                                                    <div ng-message="required" class="error-class">Please Enter Date Of Birth.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Nationality :</label>
+
+                                    <div class="controls" ng-init="formData.nationality='Fixed'">
+                                        <label class="radio span1">
+                                            <input type="radio" ng-model="formData.nationality" value="States"> States
+                                        </label>
+                                        <label class="radio span3">
+                                            <input type="radio" ng-model="formData.nationality" value="Other"> Other
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Nickname :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="100" alphanumeric class="span6" type="text" data-ng-model="formData.nickName" name="employee_nickName" placeholder="Enter Nickname">
+
+                                        <div ng-messages="addEmployee.employee_nickName.$error"
+                                             ng-show="addEmployee.employee_nickName.$invalid && !addEmployee.employee_nickName.$pristine">
+                                            <div ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</div>
+                                            <div ng-message="alphanumeric" class="error-class">Please Enter alphanumeric</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Military Services :</label>
+
+                                    <div class="controls">
+                                        <input ng-maxlength="100" alphanumeric class="span6" type="text" data-ng-model="formData.militaryServices" name="employee_militaryServices" required placeholder="Enter Military Services">
+
+                                        <div ng-messages="addEmployee.employee_militaryServices.$error"
+                                             ng-show="addEmployee.employee_militaryServices.$invalid && !addEmployee.employee_militaryServices.$pristine">
+                                            <div ng-message="maxlength" class="error-class">This field accept maximum 100 characters.</div>
+                                            <div ng-message="required" class="error-class">Please Insert Military Services.</div>
+                                            <div ng-message="alphanumeric" class="error-class">Please Enter alphanumeric</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-success" type="submit" ng-disabled="addEmployee.$invalid"><i
+                                            class="fa fa-check"> </i> Create
+                                    </button>
+                                    <button class="btn btn-danger" type="button" ui-sref="employee"><i
+                                            class="fa fa-close"> </i> Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="space15"></div>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE widget-->
+            </div>
+        </div>
+        <!-- END ADVANCED TABLE widget-->
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>
